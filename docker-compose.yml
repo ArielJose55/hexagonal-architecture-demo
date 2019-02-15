@@ -1,0 +1,45 @@
+version: '3.1'
+
+services:
+
+  adminer:
+    image: adminer
+    restart: always
+    links:
+      - db-postgres
+      - db-mysql
+    ports:
+      - 8080:8080
+
+  db-postgres:
+    image: postgres
+    restart: always
+    container_name: postgres-ph-man
+    environment:
+      POSTGRES_DB: ph-man-database
+      POSTGRES_USER: ceiba
+      POSTGRES_PASSWORD: root
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      
+  db-mysql:
+    image: mysql:5.7
+    container_name: mysql-ph-man
+    restart: always
+    environment:
+      MYSQL_DATABASE: ph-man-database
+      MYSQL_USER: ceiba
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    volumes:
+      - mysqldata:/var/lib/mysql
+volumes:
+  pgdata:
+  mysqldata:
