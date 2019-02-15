@@ -22,14 +22,26 @@ repositories {
 	mavenCentral()
 }
 
+configurations {
+    all*.exclude group: "org.hibernate", module: "hibernate-entitymanager"
+    all*.exclude group: "org.apache.tomcat", module: "tomcat-jdbc"
+}
+
 dependencies {
+	runtimeOnly 'org.projectlombok:lombok:1.18.4'
+	implementation 'com.google.guava:guava:27.0.1-jre'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
-	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'org.postgresql:postgresql'
+	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation 'org.assertj:assertj-core:3.11.1'
+	testImplementation 'commons-lang:commons-lang:2.6'
+	testImplementation 'com.h2database:h2'
 }
+

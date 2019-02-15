@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: PhMan
+server:
+  port: 8081
