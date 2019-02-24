@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public abstract class LegalPerson extends Person{
+public abstract class LegalPerson extends Person {
 	private String businessName;
 }

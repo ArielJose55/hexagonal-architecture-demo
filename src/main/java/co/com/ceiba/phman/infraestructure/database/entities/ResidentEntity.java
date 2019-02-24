@@ -1,5 +1,14 @@
 package co.com.ceiba.phman.infraestructure.database.entities;
 
-public class ResidentEntity {
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "RESIDENTS")
+public class ResidentEntity extends NaturalPersonEntity {
 }

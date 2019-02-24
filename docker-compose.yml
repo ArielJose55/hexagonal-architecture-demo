@@ -32,8 +32,9 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: ph-man-database
-      MYSQL_USER: ceiba
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: ceiba
+      MYSQL_PASSWORD: ceiba
     ports:
       - 3306:3306
     expose:

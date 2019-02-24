@@ -14,4 +14,5 @@ public abstract class NaturalPerson extends Person {
 	
 	@NotNull
 	private String lastName;
+	
 }
