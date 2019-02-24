@@ -15,4 +15,7 @@ public abstract class NaturalPerson extends Person {
 	@NotNull
 	private String lastName;
 	
+	public NaturalPerson(String identification, String typeIdentification) {
+		super(identification, typeIdentification);
+	}
 }

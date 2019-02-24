@@ -1,9 +1,9 @@
-package co.com.ceiba.phman.infraestructure.database.repositories;
+package co.com.ceiba.phman.infraestructure.spring.database.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import co.com.ceiba.phman.infraestructure.database.entities.ResidentEntity;
+import co.com.ceiba.phman.infraestructure.spring.database.entities.ResidentEntity;
 
 @Repository
 public interface ResidentRepository extends CrudRepository<ResidentEntity, String>{

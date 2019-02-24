@@ -1,4 +1,4 @@
-package co.com.ceiba.phman.infraestructure.http.controllers;
+package co.com.ceiba.phman.infraestructure.spring.http.controllers;
 
 
 import org.springframework.http.HttpStatus;

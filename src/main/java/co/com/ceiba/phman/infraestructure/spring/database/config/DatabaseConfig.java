@@ -1,4 +1,4 @@
-package co.com.ceiba.phman.infraestructure.database.config;
+package co.com.ceiba.phman.infraestructure.spring.database.config;
 
 
 import java.util.Properties;
@@ -48,7 +48,7 @@ public class DatabaseConfig {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(final DataSource dataSource) {
 		final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(dataSource);
-		em.setPackagesToScan("co.com.ceiba.phman.infraestructure.database.entities");
+		em.setPackagesToScan("co.com.ceiba.phman.infraestructure.spring.database.entities");
 		em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		em.setJpaProperties(additionalProperties());
 		return em;
