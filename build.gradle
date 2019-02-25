@@ -26,6 +26,7 @@ dependencies {
 	runtimeOnly 'org.projectlombok:lombok:1.18.4'
 	runtimeOnly 'org.postgresql:postgresql'
 	runtimeOnly 'mysql:mysql-connector-java'
+	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
 	implementation 'com.google.guava:guava:27.0.1-jre'
 	implementation 'javax.validation:validation-api:2.0.1.Final'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
