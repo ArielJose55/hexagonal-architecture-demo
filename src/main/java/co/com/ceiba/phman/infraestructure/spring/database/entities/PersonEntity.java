@@ -20,7 +20,7 @@ import lombok.Setter;
 @Entity
 @Table(name="PERSONS")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class PersonEntity {
+public class PersonEntity implements co.com.ceiba.phman.infraestructure.spring.database.entities.Entity{
 
 	@Id
 	@Column(name = "IDENTIFICATION", nullable = false)

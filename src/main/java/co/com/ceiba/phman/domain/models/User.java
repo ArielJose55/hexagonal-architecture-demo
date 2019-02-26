@@ -11,20 +11,26 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class User extends Person {
+public class User extends Person implements Model{
+
+	private static final String FIELD_NOT_EMPLY = "Este campo no puede estar vacío";
+
+	private static final String CONTRASENA_PATTERN_VALIDATE = "Password solo debe contener caracteres alfanuméricos";
+
+	private static final String USERNAME_PATTERN_VALIDATE = "Username solo debe contener caracteres alfanuméricos";
 
 	private static final String USERNAME_MESSAGE_VALIDATE = "La contraseña debe tener una longitud de entre 5 y 20 caracteres";
 
 	private static final String CONTRASENA_MESSAGE_VALIDATE = "El password debe tener una longitud de entre 5 y 20 caracteres";
 
-	@NotEmpty(message = "sihjkl")
+	@NotEmpty(message = FIELD_NOT_EMPLY)
 	@Size(min = 5, max = 20, message = USERNAME_MESSAGE_VALIDATE)
-	@Pattern(regexp = "[a-zA-Z][a-zA-Z0-9-_]{5,20}", message = "jjfr")
+	@Pattern(regexp = "[a-zA-Z][a-zA-Z0-9-_]{5,20}", message = USERNAME_PATTERN_VALIDATE)
 	private String username;
 	
-	@NotEmpty(message = "")
+	@NotEmpty(message = FIELD_NOT_EMPLY)
 	@Size(min = 5, max = 20, message = CONTRASENA_MESSAGE_VALIDATE)
-	@Pattern(regexp = "[a-zA-Z][a-zA-Z0-9-_]{5,20}", message = "jjfr")
+	@Pattern(regexp = "[a-zA-Z][a-zA-Z0-9-_]{5,20}", message = CONTRASENA_PATTERN_VALIDATE)
 	private String password;
 
 	/**
@@ -48,4 +54,7 @@ public class User extends Person {
 		this.username = username;
 		this.password = password;
 	}
+	
+	
+	
 }
