@@ -1,4 +1,4 @@
-package co.com.ceiba.phman.infraestructure.database.entities;
+package co.com.ceiba.phman.infraestructure.spring.database.entities;
 
 import java.time.LocalDateTime;
 
