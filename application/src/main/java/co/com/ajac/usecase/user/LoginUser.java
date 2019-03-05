@@ -35,7 +35,7 @@ public class LoginUser implements Command{
 			return new Receiver(userSave.get());
 		}
 		
-		return new Receiver (new ErrorResponse(409, "Uoops! La solicitud no pudo ser completada. Por favor, intentelo de nuevo"));
+		return new Receiver (new ErrorResponse(409, "Uoops! Constraseña o el password incorrectas."));
 	}
 
 }

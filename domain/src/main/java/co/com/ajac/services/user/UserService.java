@@ -21,4 +21,8 @@ public class UserService {
 	public Optional<User> login(String username, String password){
 		return userRepository.login(username, password);
 	}
+	
+	public Optional<User> get(String identification){
+		return userRepository.get(identification);
+	}
 }

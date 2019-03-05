@@ -25,4 +25,9 @@ public class UserRepositoryAdapter implements IUserRepository{
 		return Optional.ofNullable(userRepository.login(username, password));
 	}
 
+	@Override
+	public Optional<User> get(String identification) {
+		return Optional.ofNullable(userRepository.get(identification));
+	}
+
 }
