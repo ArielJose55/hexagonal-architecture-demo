@@ -1,1 +1,5 @@
 rootProject.name = 'Ph-Man'
+
+include ':domain'
+include ':infrastructure'
+include ':application'

@@ -1,20 +1,43 @@
 version: '3.1'
 
 services:
-  db-mysql:
-    image: mysql:5.7
-    container_name: mysql-ph-man
+  db:
+    image: "postgres"
     restart: always
+    container_name: "ph-man-database"
     environment:
-      MYSQL_DATABASE: ph-man-database
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: ceiba
-      MYSQL_PASSWORD: ceiba
+      POSTGRES_DB: "ph-man-database"
+      POSTGRES_USER: "phman_user"
+      POSTGRES_PASSWORD: "root"
     ports:
-      - 3306:3306
+      - 5432:5432
     expose:
-      - 3306
+      - "5432"
     volumes:
-      - mysqldata:/var/lib/mysql
+      - pg:/var/lib/postgresql/data
+    networks:
+      - pgnet
+
+  admin:
+    image: "dpage/pgadmin4"
+    restart: always
+    container_name: "admin"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "ph-man@udec.com.co"
+      PGADMIN_DEFAULT_PASSWORD: "man_ph"
+      PGADMIN_LISTEN_PORT: "5050"
+    volumes:
+      - admin4data:/var/lib/pgadmin
+    ports:
+      - 5050:5050
+    expose:
+      - "5050"
+    networks:
+      - pgnet
 volumes:
-  mysqldata:
+  pg:
+  admin4data:
+  
+networks: 
+  pgnet:
+    driver: bridge

@@ -1,0 +1,32 @@
+buildscript {
+	ext {
+		springBootVersion = '2.1.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+	compile project(":domain")
+	compile project(":application")
+	implementation project(':domain')
+	implementation project(':application')
+	implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.9.8'
+	runtimeOnly 'org.postgresql:postgresql'
+	//runtimeOnly 'mysql:mysql-connector-java' // for h2 test database
+	runtimeOnly 'org.springframework.boot:spring-boot-devtools'
+	implementation 'org.modelmapper:modelmapper:2.3.0'
+	implementation 'net.openhft:zero-allocation-hashing:0.9'
+	implementation 'org.jdbi:jdbi3-core:3.6.0'
+	implementation 'org.jdbi:jdbi3-postgres:3.6.0'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//testImplementation 'com.h2database:h2'
+}
