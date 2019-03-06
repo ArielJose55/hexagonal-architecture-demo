@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import co.com.ajac.database.repositories.user.UserRepository;
-import co.com.ajac.models.User;
+import co.com.ajac.models.core.User;
 import co.com.ajac.ports.IUserRepository;
 
 @Component

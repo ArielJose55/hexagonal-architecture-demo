@@ -2,7 +2,7 @@ package co.com.ajac.services.user;
 
 import java.util.Optional;
 
-import co.com.ajac.models.User;
+import co.com.ajac.models.core.User;
 import co.com.ajac.ports.IUserRepository;
 
 

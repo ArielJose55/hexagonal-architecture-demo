@@ -1,11 +1,13 @@
 package co.com.ajac.database.repositories.user;
 
+import java.util.List;
+
 import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import co.com.ajac.models.User;
+import co.com.ajac.models.core.User;
 
 
 @Repository
@@ -26,7 +28,6 @@ public class UserRepository {
 		return findOnly;
 	}
 
-	
 	public User login(String username, String password) {
 		User findOnly = null;
 		
@@ -40,6 +41,7 @@ public class UserRepository {
 		return findOnly;
 	}
 	
+
 	public User get(String identification) {
 		User findOnly = null;
 		
@@ -50,5 +52,18 @@ public class UserRepository {
 				.findOnly();
 		}
 		return findOnly;
+	}
+
+	
+	public List<User> findUserActives(){
+		List<User> users = null;
+		
+		try(Handle handle = jdbi.open()){
+			users = handle.createQuery("")
+				.bind("state", "ACTIVE")
+				.mapToBean(User.class)
+				.list();
+		}
+		return users;
 	}
 }

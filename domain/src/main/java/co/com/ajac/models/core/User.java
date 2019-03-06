@@ -1,4 +1,4 @@
-package co.com.ajac.models;
+package co.com.ajac.models.core;
 
 import java.time.LocalDateTime;
 
@@ -7,6 +7,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import co.com.ajac.models.Model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +15,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class User extends Person implements Model{
+public class User extends Person {
 
 	private static final String FIELD_NOT_EMPLY = "Este campo no puede estar vacío";
 

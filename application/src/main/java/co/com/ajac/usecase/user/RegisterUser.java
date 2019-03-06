@@ -5,7 +5,7 @@ import java.util.Optional;
 //import org.springframework.stereotype.Component;
 
 import co.com.ajac.models.ErrorResponse;
-import co.com.ajac.models.User;
+import co.com.ajac.models.core.User;
 import co.com.ajac.services.user.UserService;
 import co.com.ajac.usecase.Command;
 import co.com.ajac.usecase.Receiver;

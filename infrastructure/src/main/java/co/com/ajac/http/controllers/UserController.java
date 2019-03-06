@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.com.ajac.database.adapters.UserRepositoryAdapter;
 import co.com.ajac.models.Model;
-import co.com.ajac.models.User;
+import co.com.ajac.models.core.User;
 import co.com.ajac.services.user.UserService;
 import co.com.ajac.usecase.user.GetUser;
 import co.com.ajac.usecase.user.LoginUser;
