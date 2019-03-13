@@ -22,7 +22,7 @@ public class UserService {
 		return userRepository.login(username, password);
 	}
 	
-	public Optional<User> get(String identification){
+	public Optional<User> findOneBy(String identification){
 		return userRepository.get(identification);
 	}
 }

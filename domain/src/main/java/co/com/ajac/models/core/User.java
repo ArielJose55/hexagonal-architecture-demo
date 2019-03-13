@@ -7,7 +7,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-import co.com.ajac.models.Model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

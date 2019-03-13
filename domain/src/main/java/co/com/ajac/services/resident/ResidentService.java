@@ -19,4 +19,8 @@ public class ResidentService {
 	public Optional<Resident> create(Resident resident){
 		return repository.save(resident);
 	}
+	
+	public Optional<Resident> get(String identification){
+		return repository.get(identification);
+	}
 }

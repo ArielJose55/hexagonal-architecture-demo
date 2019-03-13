@@ -1,41 +1,34 @@
 package co.com.ajac.usecase.user;
 
+import java.util.Map;
 import java.util.Optional;
 
-import co.com.ajac.models.ErrorResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import co.com.ajac.exceptions.ViolatedValidationException;
 import co.com.ajac.models.core.User;
 import co.com.ajac.services.user.UserService;
 import co.com.ajac.usecase.Command;
-import co.com.ajac.usecase.Receiver;
 
-public class LoginUser implements Command{
+@Component
+public class LoginUser implements Command < User, Map<String, String> >{
 	
 	private final UserService userService;
-	
-	private final String username;
-	
-	private final String password;
-	
-	/**
-	 * @param personService
-	 * @param user
-	 */
-	public LoginUser(UserService userService, String username, String password) {
+
+	@Autowired
+	public LoginUser(UserService userService) {
 		this.userService = userService;
-		this.username = username;
-		this.password = password;
-	}
-	
-	@Override
-	public Receiver execute() {
-		
-		Optional<User> userSave = userService.login(username, password);
-		
-		if(userSave.isPresent()) {
-			return new Receiver(userSave.get());
-		}
-		
-		return new Receiver (new ErrorResponse(409, "Uoops! Constraseña o el password incorrectas."));
 	}
 
+	@Override
+	public Optional<User> execute(Map<String, String> query) {
+		
+		if(query.get("username") == null || query.get("password") == null) {
+			throw new ViolatedValidationException("Campos de username y password son requeridos");
+		}
+		
+		return userService.login( query.get("username"), query.get("password"));
+	}
+	
 }

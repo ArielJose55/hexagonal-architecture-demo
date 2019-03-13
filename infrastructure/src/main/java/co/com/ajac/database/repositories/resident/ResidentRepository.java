@@ -18,26 +18,28 @@ public class ResidentRepository {
 	public Resident create(Resident model) {
 
 		try(Handle handle = jdbi.open()) {
-			handle.inTransaction(h -> {
+			return handle.inTransaction(h -> {
 				String identification = h.createUpdate("INSERT INTO \"PERSON\"(identification, \"typeIdentification\") VALUES (:identification, :typeIdentification)")
 						.bind("identification", model.getIdentification())
 						.bind("typeIdentification", model.getTypeIdentification())
 						.executeAndReturnGeneratedKeys("identification")
-						.toString();
+						.mapTo(String.class)
+						.findOnly();
+
 				h.createUpdate("INSERT INTO \"NATURAL_PERSON\"( name, last_name, person_fk)	VALUES (:name, :last_name, :person_fk)")
 						.bind("name", model.getName())
 						.bind("last_name", model.getLastName())
 						.bind("person_fk", identification)
 						.execute();
+				
 				return h.createUpdate("INSERT INTO \"RESIDENT\"( type, person_natural_fk) VALUES (:type, :person_natural_fk)")
-					.bind("type", model.getName())
+					.bind("type", model.getType())
 					.bind("person_natural_fk", identification)
 					.executeAndReturnGeneratedKeys()
 					.mapToBean(Resident.class)
 					.findOnly();
 			});
 		}
-		return null;
 	}
 
 
@@ -45,9 +47,11 @@ public class ResidentRepository {
 		Resident resident = null;
 		
 		try(Handle handle = jdbi.open()) {
-			handle.useTransaction(h -> {
-				
-			});
+			resident = handle.createQuery("SELECT p.identification, p.\"typeIdentification\", np.\"name\", np.last_name, r.\"type\" FROM \"PERSON\" p JOIN \"NATURAL_PERSON\" np ON p.identification = np.person_fk JOIN \"RESIDENT\" r ON r.person_natural_fk = np.person_fk\r\n" + 
+					"WHERE r.person_natural_fk = :identification")
+				.bind("identification", key)
+				.mapToBean(Resident.class)
+				.findOnly();
 		}
 		
 		return resident;

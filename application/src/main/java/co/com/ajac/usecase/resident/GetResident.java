@@ -9,20 +9,19 @@ import co.com.ajac.models.core.Resident;
 import co.com.ajac.services.resident.ResidentService;
 import co.com.ajac.usecase.Command;
 
-
 @Component
-public class CreateResident implements Command<Resident,Resident>{
-	
+public class GetResident implements Command<Resident, String> {
+
 	private final ResidentService residentService;
 
 	@Autowired
-	public CreateResident(ResidentService residentService) {
+	public GetResident(ResidentService residentService) {
 		this.residentService = residentService;
 	}
 
 	@Override
-	public Optional<Resident> execute(Resident resident) {
-		return residentService.create(resident);
+	public Optional<Resident> execute(String identification) {
+		return residentService.get(identification);
 	}
-
+	
 }
